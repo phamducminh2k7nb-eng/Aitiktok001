@@ -9,14 +9,15 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
   <div class="app" id="appRoot">
     <aside class="sidebar glass">
       <div class="brand">
         <div class="logo" aria-hidden="true"><span>L</span></div>
         <div><h1>Lion AI</h1><p>AI đồng hành bán hàng live</p></div>
       </div>
-      <div class="rainbow-frame"><div>Giao diện trong suốt • rõ chữ • dễ dùng</div></div>
+      <div class="rainbow-frame"><div>Trong suốt • rõ chữ • dùng tốt trên PC, laptop, điện thoại</div></div>
       <nav class="nav" aria-label="Điều hướng chính">
         <button class="active" data-view="studio">1 • Live Studio</button>
         <button data-view="products">11 • Sản phẩm</button>
@@ -26,7 +27,10 @@
         <h2>Mã màu</h2>
         <div id="paletteList" class="palette-list"></div>
       </section>
-      <section class="side-section compact"><h2>Tiêu chí</h2><p>Trong suốt vừa đủ • tương phản cao • ít chữ thừa • thao tác nhanh • lịch sử rõ ràng.</p></section>
+      <section class="side-section compact">
+        <h2>Thiết kế</h2>
+        <p>PC: 3 cột • Laptop: 2 cột • Điện thoại: 1 cột. Màu chữ luôn có tương phản rõ ở cả sáng và tối.</p>
+      </section>
     </aside>
 
     <main class="main">
@@ -51,32 +55,69 @@
 
           <div class="studio-grid">
             <article class="card glass">
-              <div class="card-head"><div><h3>AI Host Preview</h3><p>Trả lời gọn, tự nhiên và ưu tiên tiếng Việt.</p></div><div class="seg"><button class="active" data-mode="manual">Duyệt tay</button><button data-mode="auto">Tự động + đọc</button></div></div>
-              <div class="stage"><div class="orb" id="orb"></div><strong id="hostState">Đang chờ bắt đầu</strong><span id="voiceState">Đang kiểm tra giọng tiếng Việt…</span></div>
+              <div class="card-head">
+                <div><h3>AI Host Preview</h3><p>Giọng hội thoại tự nhiên, ưu tiên tiếng Việt.</p></div>
+                <div class="seg"><button class="active" data-mode="manual">Duyệt tay</button><button data-mode="auto">Tự động + đọc</button></div>
+              </div>
+              <div class="stage">
+                <div class="orb" id="orb"></div>
+                <strong id="hostState">Đang chờ bắt đầu</strong>
+                <span id="voiceState">Đang kiểm tra giọng tiếng Việt…</span>
+              </div>
               <div class="product-strip"><div><strong id="prodName">Chưa có sản phẩm</strong><small id="prodMeta">Thêm dữ liệu để AI không bịa.</small></div><button class="btn" data-jump="products">Đổi sản phẩm</button></div>
             </article>
 
             <article class="card glass">
               <div class="card-head"><div><h3>Bình luận LIVE</h3><p>Chọn comment để Lion AI xử lý.</p></div><div class="row"><button class="btn" id="demoBtn">+ Demo comment</button><button class="btn" id="clearBtn">Xóa</button></div></div>
-              <div class="card-body"><div id="comments" class="comments"></div><div class="selected" id="selected">Chọn một bình luận để AI xử lý.</div><textarea id="reply" placeholder="Câu trả lời AI sẽ hiện ở đây..."></textarea><div class="toolbar"><div class="seg"><button class="tone active" data-tone="friendly">Khéo</button><button class="tone" data-tone="energetic">Năng lượng</button><button class="tone" data-tone="premium">Tinh tế</button></div><div class="row"><button class="btn" id="rewriteBtn">AI viết lại</button><button class="btn dark-action" id="speakBtn">Duyệt & đọc</button></div></div></div>
+              <div class="card-body">
+                <div id="comments" class="comments"></div>
+                <div class="selected" id="selected">Chọn một bình luận để AI xử lý.</div>
+                <textarea id="reply" placeholder="Câu trả lời AI sẽ hiện ở đây..."></textarea>
+                <div class="toolbar"><div class="seg"><button class="tone active" data-tone="friendly">Khéo</button><button class="tone" data-tone="energetic">Năng lượng</button><button class="tone" data-tone="premium">Tinh tế</button></div><div class="row"><button class="btn" id="rewriteBtn">AI viết lại</button><button class="btn dark-action" id="speakBtn">Duyệt & đọc</button></div></div>
+              </div>
             </article>
           </div>
         </section>
 
         <section class="view" id="view-products">
-          <article class="card glass"><div class="card-head"><div><h3>Kho sản phẩm</h3><p>Nguồn sự thật để Lion AI không tự bịa thông tin.</p></div><button class="btn" id="newProdBtn">+ Sản phẩm</button></div><div class="card-body product-layout"><div id="productList" class="product-list"></div><div class="form-grid"><label>Tên sản phẩm<input id="pName"></label><label>Giá<input id="pPrice"></label><label>Ưu đãi<input id="pOffer"></label><label>Khách phù hợp<textarea id="pAudience"></textarea></label><label>Điểm nổi bật<textarea id="pBenefits"></textarea></label><label>Không được nói<textarea id="pGuard"></textarea></label><div class="row"><button class="btn dark-action" id="saveProdBtn">Lưu</button><button class="btn" id="deleteProdBtn">Xóa</button></div></div></div></article>
+          <article class="card glass">
+            <div class="card-head"><div><h3>Kho sản phẩm</h3><p>Nguồn dữ liệu để Lion AI không tự bịa thông tin.</p></div><button class="btn" id="newProdBtn">+ Sản phẩm</button></div>
+            <div class="card-body product-layout">
+              <div id="productList" class="product-list"></div>
+              <div class="form-grid">
+                <label>Tên sản phẩm<input id="pName"></label>
+                <label>Giá<input id="pPrice"></label>
+                <label>Ưu đãi<input id="pOffer"></label>
+                <label>Khách phù hợp<textarea id="pAudience"></textarea></label>
+                <label>Điểm nổi bật<textarea id="pBenefits"></textarea></label>
+                <label>Không được nói<textarea id="pGuard"></textarea></label>
+                <div class="row"><button class="btn dark-action" id="saveProdBtn">Lưu</button><button class="btn" id="deleteProdBtn">Xóa</button></div>
+              </div>
+            </div>
+          </article>
         </section>
 
         <section class="view" id="view-settings">
-          <article class="card glass"><div class="card-head"><div><h3>Cài đặt hệ thống</h3><p>AI, TTS và bộ dò giọng tiếng Việt.</p></div><span class="chip" id="statusChip">Chưa kiểm tra</span></div><div class="card-body settings-grid">
-            <label>AI Provider<select id="provider"><option value="openai">OpenAI</option><option value="demo">Demo</option></select></label>
-            <label>Model<input id="model" value="gpt-5.6-luna"></label>
-            <label>Giọng OpenAI TTS<select id="ttsVoice"><option value="marin">Marin — tự nhiên</option><option value="cedar">Cedar — ấm, rõ</option><option value="coral">Coral — mềm</option><option value="nova">Nova</option></select></label>
-            <label>Tốc độ đọc<input id="rate" type="range" min="0.85" max="1.2" step="0.05" value="1"></label>
-            <label class="span-2">Giọng Việt trên thiết bị<div class="voice-picker"><select id="browserVoice"></select><button class="btn" id="refreshVoicesBtn" type="button">Tìm lại giọng Việt</button></div><small id="voiceHelp">Lion AI chỉ cho phép fallback sang giọng có mã ngôn ngữ vi/vi-VN.</small></label>
-            <div class="notice span-2"><b>TikTok:</b> chưa kết nối — đang chạy Demo Mode. Key OpenAI nên nằm trong Vercel Environment Variables, không đưa ra frontend.</div>
-            <div class="row span-2"><button class="btn dark-action" id="voiceTestBtn">Test giọng Việt</button><button class="btn" id="testBrowserVoiceBtn">Test giọng thiết bị</button></div>
-          </div></article>
+          <article class="card glass">
+            <div class="card-head"><div><h3>Cài đặt hệ thống</h3><p>AI, TTS, file giọng mẫu và bộ dò giọng tiếng Việt.</p></div><span class="chip" id="statusChip">Chưa kiểm tra</span></div>
+            <div class="card-body settings-grid">
+              <label>AI Provider<select id="provider"><option value="openai">OpenAI</option><option value="demo">Demo</option></select></label>
+              <label>Model<input id="model" value="gpt-5.6-luna"></label>
+              <label>Giọng OpenAI TTS<select id="ttsVoice"><option value="lion-conversation">Lion Hội thoại — tự nhiên</option><option value="marin">Marin</option><option value="cedar">Cedar</option><option value="coral">Coral</option><option value="nova">Nova</option><option value="custom">Custom voice ID</option></select></label>
+              <label>Tốc độ đọc<input id="rate" type="range" min="0.85" max="1.2" step="0.05" value="1"></label>
+              <label class="span-2 custom-voice-row" id="customVoiceRow">Custom voice ID<input id="customVoiceId" placeholder="voice_1234"><small>Chỉ dùng khi tài khoản OpenAI của bạn đã có custom voice hợp lệ.</small></label>
+              <label class="span-2">Giọng Việt trên thiết bị<div class="voice-picker"><select id="browserVoice"></select><button class="btn" id="refreshVoicesBtn" type="button">Tìm lại giọng Việt</button></div><small id="voiceHelp">Lion AI chỉ fallback sang giọng có mã vi/vi-VN, không tự chuyển sang tiếng Anh.</small></label>
+
+              <div class="voice-sample span-2">
+                <div class="voice-sample-copy"><b>File giọng hội thoại bạn gửi</b><small>Đã nhúng vào Lion AI để nghe đối chiếu chất giọng. Đây là file mẫu, không tự biến thành giọng tổng hợp nếu chưa có custom voice ID.</small></div>
+                <audio id="voiceSampleAudio" controls preload="metadata"></audio>
+                <div class="row"><button class="btn" id="playVoiceSampleBtn" type="button">Nghe file giọng mẫu</button><button class="btn dark-action" id="useConversationPresetBtn" type="button">Dùng preset Hội thoại</button></div>
+              </div>
+
+              <div class="notice span-2"><b>TikTok:</b> chưa kết nối — đang chạy Demo Mode. Key OpenAI nên nằm trong Vercel Environment Variables, không đưa ra frontend.</div>
+              <div class="row span-2"><button class="btn dark-action" id="voiceTestBtn">Test giọng Lion AI</button><button class="btn" id="testBrowserVoiceBtn">Test giọng thiết bị</button></div>
+            </div>
+          </article>
         </section>
       </div>
     </main>
@@ -86,7 +127,9 @@
       <div id="historyList" class="history-list"></div>
     </aside>
   </div>
+
   <div class="toast" id="toast" role="status"></div>
+  <script src="/voice-reference.js"></script>
   <script src="/voices.js"></script>
   <script src="/app.js"></script>
 </body>
